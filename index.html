@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./assets/css/fontawesome-free/css/all.min.css">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Welcome dear user</title>
+</head>
+<body class="antialiased">
+
+    <!-- container -->
+    <div id="app" class="flex flex-1 flex-col-reverse py-4 md:py-0 w-screen h-screen bg-gradient-to-tr from-yellow-400 via-green-500 to-blue-400 items-center">
+        <div class="flex-none bg-white border w-full md:w-10/12 h-full md:h-5/6 border-1 border-gray-200 rounded-none md:rounded-t-lg">
+            <div class="flex flex-1 flex-col  w-full h-full py-2 pt-3 px-0 md:px-8 md:py-4">
+                <!-- avatar -->
+                    <section id="rounded-avatar" class="flex flex-shrink flex-shrink-0 flex-row w-full h-0 justify-center items-center">
+                        <div class="w-28 h-28 bg-green-300 ring-2 ring-opacity-60 mt-24 md:-mt-3 ring-green-200 text-center flex rounded-full items-center flex-col justify-center">
+                            <strong class="font-black text-4xl text-white rounded-full flex-none tracking-wider">
+                                GA
+                            </strong>
+                        </div>
+                    </section>
+                    <div class="mt-28 md:mt-14 flex w-full h-10">
+                        <nav class="w-full border-1 border-t-gray-200 flex flex-row justify-center">
+                            <section id="socials_contacts" class="flex flex-row space-x-2">
+                                <a href="#" class="bg-transparent cursor-pointer">
+                                    <i class="fab fa-linkedin-in text-3xl hover:text-blue-700"></i>
+                                </a>
+                                <a href="#" class="bg-transparent cursor-pointer">
+                                    <i class="fab fa-github text-3xl hover:text-blue-700 "></i>
+                                </a>
+                            </section>
+                        </nav>
+                    </div>
+                <!-- .avatr -->
+                <!-- main content -->
+                <main class="w-full h-full overflow-y-hidden" >
+                    <section id="quote" class="flex flex-row justify-center divide divide-x-2 divide-black space-x-4">
+                        <blockquote class="text-lg font-semibold text-black-500 italic">
+                            Jhon Doe
+                        </blockquote>
+                        <div>
+                            <p class="text-black text-lg font-semibold ml-4">
+                                <span>
+                                    <i class="fas fa-phone-alt"></i>
+                                </span> +58-000000000
+                            </p>
+                        </div>
+                    </section>
+                    <div class="flex flex-col h-full w-full mt-2">
+                        <div class="flex flex-row justify-center w-full  space-x-2 border-1 border-b-gray-500">
+                            <span @click='changeTabView' :class="
+                                {
+                                    'cursor-pointer transition text-black py-3 ease-in text-md font-semibold w-20 h-12 px-4 text-center': true,
+                                    'bg-green-300 rounded-t-md text-green-700': showAboutTab
+                                }
+                            " tab-clicked='about-me'>
+                                Skills
+                            </span>
+                            <span @click="changeTabView" :class="
+                                {
+                                    'cursor-pointer transition text-black py-3 ease-in text-md font-semibold w-20 h-12 px-4 text-center': true,
+                                    'bg-green-300 rounded-t-md text-green-700': showAppsTab
+                                }
+                            " tab-clicked='apps-gallery'>
+                                Apps
+                            </span>
+                            <span @click='changeTabView' :class="
+                                {
+                                    'cursor-pointer transition text-black py-3 ease-in text-md font-semibold w-20 h-12 px-4 text-center': true,
+                                    'bg-green-300 rounded-t-md text-green-700': showWebsTabs
+                                }
+                            " tab-clicked='webs-apps'>
+                                Webs
+                            </span>
+                        </div>
+                        <ul>
+                            <li id="about-me" v-show="showAboutTab">
+                                <div class="pt-1 h-3/4 overflow-auto">
+                                    <div class="flex flex-1 flex-col justify-evenly items-center">
+                                        <div class="flex flex-1 flex-row w-full items-center justify-between px-8 mt-2">
+                                            <!-- skills -->
+                                            <section
+                                                v-for="framework in skills.frameworks" :key="framework.id"
+                                                 :id="framework.id" class="flex flex-col text-center">
+                                                <p :class="[framework.color, 'text-6xl']">
+                                                    <i :class="framework.faIcon"></i>
+                                                </p>
+                                                <div>
+                                                    <h1 class="text-black italic">
+                                                        {{ framework.title }}
+                                                    </h1>
+                                                </div>
+                                                <div :class="['w-full shadow ']"></div>
+                                            </section>
+                                            <!-- /Laravel -->
+                                        </div>
+                                        <div class="flex flex-1 flex-row w-full items-center justify-between px-8 mt-8">
+                                            <!-- skills -->
+                                            <section
+                                                v-for="framework in skills.languages" :key="framework.id"
+                                                 :id="framework.id" class="flex flex-col text-center">
+                                                <p :class="[framework.color, 'text-6xl']">
+                                                    <i :class="framework.faIcon"></i>
+                                                </p>
+                                                <div>
+                                                    <h1 class="text-black italic">
+                                                        {{ framework.title }}
+                                                    </h1>
+                                                </div>
+                                                <div :class="['w-full shadow ']"></div>
+                                            </section>
+                                            <!-- /Laravel -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li id="apps-gallery" v-show="showAppsTab" >
+                                <!-- image gallery -->
+                                <div class="pt-1 h-3/4 overflow-y-scroll">
+                                    <section id="galleries">
+                                        <div class="grid grid-rows-2 grid-flow-row md:grid-cols-3 md:grid-flow-row gap-1">
+                                            <div 
+                                                v-for="app in apps" :key="app.id"
+                                                @mouseover="displayObject" 
+                                                @mouseleave="clearDisplayObject"
+                                                :class="{
+                                                    'bg-red-900 h-44 w-full bg-center object-fit bg-cover cursor-pointer': true,
+                                                }" 
+                                                :style="{
+                                                    backgroundImage: 'url('+app.img+')'
+                                                }"
+                                            >
+                                                <div 
+                                                    @mouseover="displayObject" 
+                                                    @mouseleave="clearDisplayObject"
+                                                    :class="{
+                                                        'transition ease-in h-full w-full hover:z-0 hover:bg-black hover:bg-opacity-30': true,
+                                                        'invisible': !visibleAppBg == app.id,
+                                                        'flex flex-1 flex-row justify-center pt-7 pb-3': true
+                                                    }" :appId="app.id">
+                                                    <section @mouseover.native="displayObject"  id="app_name" :class="{ 'hidden': visibleAppBg != app.id, 'flex flex-col justify-evenly text-center': true}">
+                                                        <p :class="{'transition ease-in text-white text-4xl h-0': true}">
+                                                            <i class="fas fa-mobile-alt"></i>
+                                                        </p>
+                                                        <p class="text-white font-semibold text-2xl">
+                                                            {{ app.title }}
+                                                        </p>
+                                                    </section>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                                <!-- .images gallery -->
+                            </li>
+                            <li id="webs-apps" v-show="showWebsTabs"></li>
+                        </ul>
+                    </div> 
+                </main>
+                <!-- .main content -->
+            </div>
+        </div>
+    </div>
+    <!-- .container -->
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data() {
+            return {
+                apps: [
+                    {id: '240900', title: "app 1", img: './assets/images/posts/pc_beer.jpg', display: false},
+                    {id: 2, title: "app 2", img: './assets/images/posts/pc_beer.jpg', display: false},
+                    {id: 3, title: "app 3", img: './assets/images/posts/pc_beer.jpg', display: false},
+                    {id: 4, title: "app 4", img: './assets/images/posts/pc_beer.jpg', display: false},
+                    {id: 6, title: "app 6", img: './assets/images/posts/pc_beer.jpg', display: false},
+                ],
+                skills: {
+                    languages: [
+                        {id: 'php', title: 'PHP (v5+)', faIcon: 'fab fa-php', domainPercent: "80", color: 'text-indigo-800'},
+                        {id: 'python', title: 'Python', faIcon: 'fab fa-python', domainPercent: "40", color: 'text-green-500'},
+                        {id: 'js', title: 'Javascript', faIcon: 'fab fa-js', domainPercent: "60", color: 'text-yellow-400' },
+                        {id: 'dart', title: 'Dart', faIcon: 'fas fa-dove', domainPercent: "70", color: 'text-indigo-900'},
+                        {id: 'sql', title: 'SQL', faIcon: 'fas fa-database', domainPercent: "70", color: 'text-red-800'}
+                    ],
+                    frameworks: [
+                        {id: 'laravel', title: 'Laravel', faIcon: 'fab fa-laravel', domainPercent: "80", color: 'text-red-700'},
+                        {id: 'django', title: 'Django', faIcon: 'fab fa-python', domainPercent: "80", color: 'text-green-500'},
+                        {id: 'react', title: 'Reactjs', faIcon: 'fab fa-react', domainPercent: "80", color: 'text-indigo-400'},
+                        {id: 'rn', title: 'React Native', faIcon: 'fab fa-react', domainPercent: "80", color: 'text-indigo-500'},
+                        {id: 'flutter', title: 'Flutter', faIcon: 'fas fa-dove', domainPercent: "80", color: 'text-blue-400'}
+                    ]
+                },
+                visibleAppBg: 1,
+                tabShow: "about-me"
+            }
+        },
+        methods: {
+            displayObject(ev) {
+                this.visibleAppBg = ev.target.getAttribute('appId');
+            },
+            clearDisplayObject(ev) {
+                this.visibleAppBg = null;
+            },
+            changeTabView(ev) {
+                this.tabShow = ev.target.getAttribute('tab-clicked')
+            }
+        },
+        computed: {
+            isVisible() {
+                return this.visibleAppBg;
+            },
+            showAboutTab() {
+                return this.tabShow == 'about-me'
+            },
+            showAppsTab() {
+                return this.tabShow == 'apps-gallery'
+            },
+            showWebsTabs() {
+                return this.tabShow == 'webs-apps'
+            }
+        }
+    })
+</script>
+</body>
+</html>
