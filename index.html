@@ -6,6 +6,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="./assets/css/fontawesome-free/css/all.min.css">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/vueperslides/dist/vueperslides.css" rel="stylesheet">
     <title>Welcome dear user</title>
 </head>
 <body class="antialiased">
@@ -24,12 +25,15 @@
                     </section>
                     <div class="mt-28 md:mt-14 flex w-full h-10">
                         <nav class="w-full border-1 border-t-gray-200 flex flex-row justify-center">
-                            <section id="socials_contacts" class="flex flex-row space-x-2">
-                                <a href="#" class="bg-transparent cursor-pointer">
+                            <section id="socials_contacts" class="flex flex-row space-x-4">
+                                <a href="https://www.linkedin.com/in/gjae/" target="_blank" class="bg-transparent cursor-pointer">
                                     <i class="fab fa-linkedin-in text-3xl hover:text-blue-700"></i>
                                 </a>
-                                <a href="#" class="bg-transparent cursor-pointer">
+                                <a href="https://github.com/gjae" target="_blank" class="bg-transparent cursor-pointer">
                                     <i class="fab fa-github text-3xl hover:text-blue-700 "></i>
+                                </a>
+                                <a href="https://t.me/gjavilae" target="_blank" class="bg-transparent cursor-pointer">
+                                    <i class="fas fa-paper-plane text-3xl hover:text-blue-700 "></i>
                                 </a>
                             </section>
                         </nav>
@@ -37,32 +41,35 @@
                 <!-- .avatr -->
                 <!-- main content -->
                 <main class="w-full h-full overflow-y-hidden" >
-                    <section id="quote" class="flex flex-row justify-center divide divide-x-2 divide-black space-x-4">
-                        <blockquote class="text-lg font-semibold text-black-500 italic">
-                            Jhon Doe
-                        </blockquote>
-                        <div>
-                            <p class="text-black text-lg font-semibold ml-4">
-                                <span>
-                                    <i class="fas fa-phone-alt"></i>
-                                </span> +58-000000000
-                            </p>
+                    <section id="quote" class="flex flex-row justify-center space-x-4">
+                        <div class="flex flex-col text-center">
+                            <blockquote class="text-lg font-semibold text-black-500 italic">
+                                Giovanny Avila
+                            </blockquote>
+                            <div>
+                                <p class="text-black text-md font-md ml-4">
+                                    <span class="divide divide-x-1 divide-black">
+                                        <i class="fas fa-phone-alt"></i> +584124723883 |
+                                        <i class="fas fa-at"></i> gjavilae@gmail.com
+                                    </span> 
+                                </p>
+                            </div>
                         </div>
                     </section>
                     <div class="flex flex-col h-full w-full mt-2">
-                        <div class="flex flex-row justify-center w-full  space-x-2 border-1 border-b-gray-500">
+                        <div class="flex flex-row shadow-md justify-center w-full  space-x-2 border-1 border-b-gray-500">
                             <span @click='changeTabView' :class="
                                 {
                                     'cursor-pointer transition text-black py-3 ease-in text-md font-semibold w-20 h-12 px-4 text-center': true,
-                                    'bg-green-300 rounded-t-md text-green-700': showAboutTab
+                                    'border-b-4 border-green-700 text-green-800': showAboutTab
                                 }
                             " tab-clicked='about-me'>
-                                Skills
+                                About
                             </span>
                             <span @click="changeTabView" :class="
                                 {
                                     'cursor-pointer transition text-black py-3 ease-in text-md font-semibold w-20 h-12 px-4 text-center': true,
-                                    'bg-green-300 rounded-t-md text-green-700': showAppsTab
+                                    'border-b-4 border-green-700 text-green-800': showAppsTab
                                 }
                             " tab-clicked='apps-gallery'>
                                 Apps
@@ -70,52 +77,47 @@
                             <span @click='changeTabView' :class="
                                 {
                                     'cursor-pointer transition text-black py-3 ease-in text-md font-semibold w-20 h-12 px-4 text-center': true,
-                                    'bg-green-300 rounded-t-md text-green-700': showWebsTabs
+                                    'border-b-4 border-green-700 text-green-800': showWebsTabs
                                 }
                             " tab-clicked='webs-apps'>
                                 Webs
                             </span>
                         </div>
                         <ul class="h-full">
-                            <li id="about-me" v-show="showAboutTab">
-                                <div class="pt-1 h-3/4 overflow-auto">
-                                    <div class="flex flex-1 flex-col justify-evenly items-center">
-                                        <div class="flex flex-1 flex-row w-full items-center justify-between px-4 mt-2 space-x-2">
-                                            <!-- skills -->
-                                            <section
-                                                v-for="framework in skills.frameworks" :key="framework.id"
-                                                 :id="framework.id" class="flex flex-col text-center">
-                                                <p :class="[framework.color, 'text-6xl']">
-                                                    <i :class="framework.faIcon"></i>
-                                                </p>
-                                                <div>
-                                                    <h1 class="text-black italic">
-                                                        {{ framework.title }}
-                                                    </h1>
+                            <li id="about-me" class="h-full" v-show="showAboutTab">
+                                <div class="h-full overflow-auto">
+                                    <!-- aboutme -->
+                                   <div class="flex flex-1 flex-col md:flex-row space-x-4 pt-2 md:pt-8 h-full">
+                                       <!-- Me -->
+                                       <div class="flex flex-col w-full md:w-3/6 h-full">
+                                           <h1 class="text-black font-black text-4xl">
+                                               ¡Hola!
+                                           </h1>
+                                           <div>
+                                                <h3 class="text-black font-medium text-xl overflow-clip text-justify">
+                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius totam aut qui. Dignissimos rerum pariatur inventore, 
+                                                    culpa cum impedit debitis aperiam officia nesciunt unde, sit veniam earum blanditiis repudiandae voluptatem!
+                                                </h3>
+                                           </div>
+                                           <section id="my_stack" class="flex flex-row space-x-2 mt-2 w-full justify-center items-center overflow-x-auto">
+                                                <div v-for="tech in currentStacks" :key="tech.id" class="transition ease-in duration-1000 text-5xl">
+                                                    <div class="w-36 h-26" v-if="isUrl(tech.faIcon)" >
+                                                        <img :src="tech.faIcon" 
+                                                            class="object-fit" alt="">
+                                                    </div>
+                                                     <i :class="[tech.faIcon, tech.color]" v-else></i>
                                                 </div>
-                                                <div :class="['w-full shadow ']"></div>
-                                            </section>
-                                            <!-- /Laravel -->
-                                        </div>
-                                        <div class="flex flex-1 flex-row w-full items-center justify-between px-4 mt-8 space-x-2">
-                                            <!-- skills -->
-                                            <section
-                                                v-for="framework in skills.languages" :key="framework.id"
-                                                 :id="framework.id" class="flex flex-col text-center">
-                                                <p :class="[framework.color, 'text-6xl']">
-                                                    <i :class="framework.faIcon"></i>
-                                                </p>
-                                                <div>
-                                                    <h1 class="text-black italic">
-                                                        {{ framework.title }}
-                                                    </h1>
-                                                </div>
-                                                <div :class="['w-full shadow ']"></div>
-                                            </section>
-                                            <!-- /Laravel -->
-                                        </div>
-                                    </div>
+                                           </section>
+                                       </div>
+                                       <!-- .Me -->
+                                       <!-- Illustration -->
+                                       <div class="flex flex-col h-full items-center px-2 justify-end w-full md:w-3/6 content-center">
+                                           <img src="./assets/images/software_dev.svg" class="w-96" alt="">
+                                       </div>
+                                       
+                                   </div>
                                 </div>
+                                <!-- aboutme -->
                             </li>
                             <li id="apps-gallery" v-show="showAppsTab"  class="h-5/6 overflow-y-auto">
                                 <!-- image gallery -->
@@ -186,17 +188,17 @@
                         {id: 'php', title: 'PHP (v5+)', faIcon: 'fab fa-php', domainPercent: "80", color: 'text-indigo-800'},
                         {id: 'python', title: 'Python', faIcon: 'fab fa-python', domainPercent: "40", color: 'text-green-500'},
                         {id: 'js', title: 'Javascript', faIcon: 'fab fa-js', domainPercent: "60", color: 'text-yellow-400' },
-                        {id: 'dart', title: 'Dart', faIcon: 'fas fa-dove', domainPercent: "70", color: 'text-indigo-900'},
                         {id: 'sql', title: 'SQL', faIcon: 'fas fa-database', domainPercent: "70", color: 'text-red-800'}
                     ],
                     frameworks: [
                         {id: 'laravel', title: 'Laravel', faIcon: 'fab fa-laravel', domainPercent: "80", color: 'text-red-700'},
-                        {id: 'django', title: 'Django', faIcon: 'fab fa-python', domainPercent: "80", color: 'text-green-500'},
-                        {id: 'react', title: 'Reactjs', faIcon: 'fab fa-react', domainPercent: "80", color: 'text-indigo-400'},
+                        {id: 'django', title: 'Django', faIcon: 'https://twilio-cms-prod.s3.amazonaws.com/images/django-dark.width-808.png', domainPercent: "80", color: 'text-green-500'},
                         {id: 'rn', title: 'React Native', faIcon: 'fab fa-react', domainPercent: "80", color: 'text-indigo-500'},
-                        {id: 'flutter', title: 'Flutter', faIcon: 'fas fa-dove', domainPercent: "80", color: 'text-blue-400'}
+                        {id: 'flutter', title: 'Flutter', faIcon: 'https://flutter.dev/assets/flutter-lockup-1caf6476beed76adec3c477586da54de6b552b2f42108ec5bc68dc63bae2df75.png', domainPercent: "80", color: 'text-blue-400'},
+                        {id: 'js', title: 'Javascript', faIcon: 'fab fa-js', domainPercent: "60", color: 'text-yellow-400' },
                     ]
                 },
+                currentStacks: [],
                 visibleAppBg: 1,
                 tabShow: "about-me"
             }
@@ -210,6 +212,16 @@
             },
             changeTabView(ev) {
                 this.tabShow = ev.target.getAttribute('tab-clicked')
+            },
+            isUrl(url) {
+                var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+                    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+                    '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+                    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+                    '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+                    '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+
+                return pattern.test(url); 
             }
         },
         computed: {
@@ -225,7 +237,14 @@
             showWebsTabs() {
                 return this.tabShow == 'webs-apps'
             }
-        }
+        },
+        mounted() {
+            stacks = [
+                this.skills.languages,
+                this.skills.frameworks
+            ]
+            this.currentStacks = stacks[Math.floor(Math.random() * stacks.length)]
+        },
     })
 </script>
 </body>
